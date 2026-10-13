@@ -1,0 +1,47 @@
+{
+  "Actions": [
+    {
+      "Icon": "static/action",
+      "Name": "Claude Code",
+      "DisableAutomaticStates": true,
+      "States": [
+        {
+          "Image": "static/key",
+          "TitleAlignment": "bottom",
+          "FontSize": "10"
+        }
+      ],
+      "Settings": {
+        "projectPath": "",
+        "mode": "resume",
+        "sessionId": "",
+        "label": "",
+        "terminal": "wt",
+        "shellPath": "",
+        "window": "tab",
+        "extraArgs": ""
+      },
+      "Controllers": ["Keypad"],
+      "UserTitleEnabled": true,
+      "SupportedInMultiActions": true,
+      "Tooltip": "Launch Claude Code in a project with a pinned chat",
+      "UUID": "com.claudecode.streamdeck.launch",
+      "PropertyInspectorPath": "propertyInspector/index.html"
+    }
+  ],
+  "SDKVersion": 2,
+  "Author": "Edgar",
+  "Name": "Claude Code Launcher",
+  "Description": "Launch Claude Code with one key: project + pinned chat.",
+  "Icon": "static/plugin",
+  "Category": "Claude Code",
+  "CategoryIcon": "static/category",
+  "CodePathWin": "plugin/index.js",
+  "Version": "1.1.0",
+  "URL": "https://claude.com/claude-code",
+  "OS": [
+    { "Platform": "windows", "MinimumVersion": "10" }
+  ],
+  "Software": { "MinimumVersion": "3.10.188.226" },
+  "Nodejs": { "Version": "20" }
+}

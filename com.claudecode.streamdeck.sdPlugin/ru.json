@@ -1,0 +1,9 @@
+{
+  "Name": "Claude Code Launcher",
+  "Description": "Запуск Claude Code одной кнопкой: проект + закреплённый чат.",
+  "Category": "Claude Code",
+  "com.claudecode.streamdeck.launch": {
+    "Name": "Claude Code",
+    "Tooltip": "Запустить Claude Code в проекте с закреплённым чатом"
+  }
+}

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Claude Code</title>
+  <style>
+    :root {
+      --bg: #2d2d2d; --field: #3d3d3d; --border: #4a4a4a; --text: #d8d8d8;
+      --muted: #969696; --accent: #d97757; --err: #e5675a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 8px 10px 16px; background: var(--bg); color: var(--text);
+      font: 12px/1.4 "Segoe UI", system-ui, sans-serif;
+    }
+    .row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+    .row > label { flex: 0 0 82px; color: var(--muted); text-align: right; }
+    .row > .ctl { flex: 1; min-width: 0; display: flex; gap: 4px; }
+    input, select, button {
+      font: inherit; color: var(--text); background: var(--field);
+      border: 1px solid var(--border); border-radius: 3px; height: 26px; padding: 0 6px; min-width: 0;
+    }
+    input, select { flex: 1; width: 100%; }
+    input:focus, select:focus { outline: none; border-color: var(--accent); }
+    button { cursor: pointer; flex: 0 0 auto; }
+    button:hover { border-color: var(--accent); }
+    button.primary { background: var(--accent); border-color: var(--accent); color: #fff; width: 100%; height: 30px; }
+    .hint { color: var(--muted); font-size: 11px; margin: -2px 0 6px 90px; overflow-wrap: anywhere; }
+    .hint.err { color: var(--err); }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 10px 0; }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <label for="chatPick" data-i18n="chat">Chat</label>
+    <div class="ctl">
+      <select id="chatPick"><option value="" data-i18n="loading">— loading… —</option></select>
+    </div>
+  </div>
+  <div class="hint" data-i18n-html="renameHint">Rename a chat with <b>/rename</b> inside it.</div>
+  <div class="row">
+    <label for="projectPath" data-i18n="folder">Folder</label>
+    <div class="ctl">
+      <input id="projectPath" placeholder="empty — home folder" data-i18n-placeholder="folderPlaceholder" spellcheck="false">
+      <button id="browse" title="Choose folder" data-i18n-title="browse">…</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <label for="mode" data-i18n="mode">Mode</label>
+    <div class="ctl">
+      <select id="mode">
+        <option value="resume" data-i18n="modeResume">Pinned chat</option>
+        <option value="continue" data-i18n="modeContinue">Latest chat of the project</option>
+        <option value="pick" data-i18n="modePick">Pick a chat on launch</option>
+        <option value="new" data-i18n="modeNew">New chat</option>
+      </select>
+    </div>
+  </div>
+  <div class="row" id="sessionRow">
+    <label for="sessionId" data-i18n="session">Session</label>
+    <div class="ctl">
+      <select id="sessionId"></select>
+      <button id="reload" title="Refresh list" data-i18n-title="reload">⟳</button>
+    </div>
+  </div>
+  <div class="hint" id="sessionHint"></div>
+
+  <hr>
+
+  <div class="row">
+    <label for="label" data-i18n="label">Title</label>
+    <div class="ctl"><input id="label" placeholder="folder name" data-i18n-placeholder="labelPlaceholder"></div>
+  </div>
+  <div class="row">
+    <label for="terminal" data-i18n="terminal">Terminal</label>
+    <div class="ctl">
+      <select id="terminal">
+        <option value="wt">Windows Terminal</option>
+        <option value="cmd" data-i18n="cmd">Console (cmd)</option>
+        <optgroup label="PowerShell" id="shells">
+          <option disabled>searching…</option>
+        </optgroup>
+      </select>
+      <button id="rescan" title="Find PowerShell on this PC again" data-i18n-title="rescan">⟳</button>
+    </div>
+  </div>
+  <div class="row" id="windowRow">
+    <label for="window" data-i18n="open">Open in</label>
+    <div class="ctl">
+      <select id="window">
+        <option value="tab" data-i18n="newTab">New tab</option>
+        <option value="window" data-i18n="newWindow">New window</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <label for="extraArgs" data-i18n="args">Arguments</label>
+    <div class="ctl"><input id="extraArgs" placeholder="--model opus" spellcheck="false"></div>
+  </div>
+
+  <hr>
+  <button class="primary" id="test" data-i18n="launchNow">Launch now</button>
+  <div class="hint err hidden" id="error" style="margin-left:0;margin-top:6px"></div>
+
+  <script src="i18n.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

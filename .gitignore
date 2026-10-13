@@ -1,0 +1,13 @@
+# dependencies and build output
+node_modules/
+bin/
+obj/
+
+# runtime logs (contain local paths)
+*.log
+
+# PowerToys Run plugin lives locally only
+PowerToysRun.ClaudeCode/
+
+# local test tools
+tests/

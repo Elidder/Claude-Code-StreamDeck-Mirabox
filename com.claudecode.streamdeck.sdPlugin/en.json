@@ -1,0 +1,9 @@
+{
+  "Name": "Claude Code Launcher",
+  "Description": "Launch Claude Code with one key: project + pinned chat.",
+  "Category": "Claude Code",
+  "com.claudecode.streamdeck.launch": {
+    "Name": "Claude Code",
+    "Tooltip": "Launch Claude Code in a project with a pinned chat"
+  }
+}
